@@ -1,0 +1,59 @@
+<script type="text/javascript">
+function Node(val){
+  this.val=val;
+  this.next=null;
+}
+function List(){
+  this.head=null;
+  this.tail=null;
+  this.add=function(val)
+  {
+    var node=new Node(val);
+    if(this.head==null){
+      this.head=node;
+      this.tail=node;
+    }else{
+      this.tail.next=node;
+      this.tail=node;
+    }
+  };
+  this.sort=function()
+{
+  var current=this.head;
+  while(current.next!=null)
+    {
+      var cab=this.head;
+      var eng=this.head.next;
+      while(eng.next != null)
+       {
+         if(this.head.next.val< this.head.val)
+           {
+             this.head.next=this.head.next.next;
+             this.head.next.next = this.head;
+             this.head = this.head.next;
+           }
+         else if(eng.next.val<eng.val)
+           {
+             cab.next=eng.next;
+             eng.next=eng.next.next;
+             eng.next.next=eng;
+           }
+         if(eng.next==null){
+           eng=this.tail;
+         }
+         eng=eng.next;
+         cab=cab.next;
+       }
+      current=current.next;
+    }
+};
+}
+var list=new List();
+list.add(5);
+list.add(4);
+list.add(2);
+list.add(3);
+list.add(1);
+// list.sort();
+console.log(list);
+</script>
